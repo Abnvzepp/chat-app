@@ -19,6 +19,9 @@ const io = socketio(server, {
     }
 });
 
+app.use(router);
+app.use(cors());
+
 io.on('connection', (socket) =>{
 
     socket.on('join', ({ name,room }, callback) =>{
@@ -54,6 +57,6 @@ io.on('connection', (socket) =>{
     })
 });
 
-app.use(router);
+
 
 server.listen(PORT, () => console.log(`Server is running at ${PORT}`));
